@@ -12,7 +12,13 @@ export default defineConfig({
     port: 5173,
     proxy: {
       // Frontend calls /api/* -> forwarded to the Express backend.
-      '/api': 'http://localhost:4000',
+      // The backend's routes no longer include the '/api' prefix (that prefix
+      // is stripped by Netlify's Functions runtime in production), so the
+      // dev proxy must strip it here too, to match.
+      '/api': {
+        target: 'http://localhost:4000',
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
     },
   },
 });

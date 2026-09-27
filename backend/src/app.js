@@ -36,16 +36,21 @@ app.use(
   })
 );
 
-app.get('/api/health', (_req, res) => {
+// NOTE: no '/api' prefix here. Netlify's redirect rule sends browser requests
+// from /api/* to /.netlify/functions/api/:splat, and the Netlify Functions
+// runtime strips the function's own base path ("/.netlify/functions/api")
+// before handing the remaining path to this Express app via serverless-http.
+// So Express must match on the bare paths below, not '/api/...'.
+app.get('/health', (_req, res) => {
   res.json({ ok: true, service: 'sf-top-leases-ytd-api' });
 });
 
-app.use('/api/properties', properties);
-app.use('/api/leases', leases);
-app.use('/api/transactions', transactions);
-app.use('/api/stats', stats);
-app.use('/api/uploads', uploads);
-app.use('/api/bulk', bulk);
+app.use('/properties', properties);
+app.use('/leases', leases);
+app.use('/transactions', transactions);
+app.use('/stats', stats);
+app.use('/uploads', uploads);
+app.use('/bulk', bulk);
 
 app.use((_req, res) => {
   res.status(404).json({ error: 'API route not found' });

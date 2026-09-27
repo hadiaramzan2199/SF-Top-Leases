@@ -1,0 +1,26 @@
+{
+  "name": "sf-top-leases-ytd-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "cesium": "^1.121.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.7.0",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^4.3.1",
+    "tailwindcss": "^4.3.3",
+    "vite": "^5.4.2",
+    "vite-plugin-cesium": "^1.2.23"
+  },
+  "description": "SF Top Leases YTD React/Cesium frontend"
+}

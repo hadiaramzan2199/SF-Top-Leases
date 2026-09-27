@@ -1,0 +1,16 @@
+# Dependencies / build output
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.netlify/
+*.log
+.DS_Store
+
+# Local environment files (never commit secrets)
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
